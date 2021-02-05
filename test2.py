@@ -15,9 +15,11 @@ def start_command(message):
         'To get the exchange rates press /exchange.\n' +  
         'To get help press /help.'  
   )
-
+userId = 0
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
+    userId = message.from_user.id
+    print(userId)
     if message.text.lower() == 'привет':
         bot.send_message(message.from_user.id, 'Привет!')
     elif message.text == "ShAmIl":
@@ -26,10 +28,10 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
 
 def ob():
-    print("Hellow")
+    bot.send_message(926299776, "Hellow")
 
 def send_napom():
-    schedule.every().seconds.do(ob)
+    schedule.every().minutes.do(ob)
     while(True):
         schedule.run_pending()
         
